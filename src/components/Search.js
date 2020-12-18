@@ -57,7 +57,9 @@ const Search = () => {
   });
 
   return (
-    <div>
+    <div className="ui raised segment">
+      <h2 className="ui right floated header">Search Wikipedia</h2>
+      <div className="ui clearing divider"></div>
       <div className="ui form">
         <div className="field">
           <label htmlFor="srch">Enter Search Term</label>

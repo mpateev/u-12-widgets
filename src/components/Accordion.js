@@ -22,7 +22,14 @@ function Accordion({ items }) {
       </React.Fragment>
     );
   });
-  return <div className="ui styled accordion">{renderedItems}</div>;
+  return (
+    <div className="ui raised segment">
+      <h2 className="ui right floated header">Accordion</h2>
+      <div className="ui clearing divider"></div>
+
+      <div className="ui styled accordion">{renderedItems}</div>
+    </div>
+  );
 }
 
 export default Accordion;
