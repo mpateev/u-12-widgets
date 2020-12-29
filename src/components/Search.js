@@ -1,6 +1,5 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import Accordion from "./Accordion";
 
 const urlWiki = "https://en.wikipedia.org/w/api.php"; // * action=query&list=search&format=json&origin=*&srsearch=programming'
 
