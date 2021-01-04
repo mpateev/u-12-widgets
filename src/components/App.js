@@ -27,6 +27,7 @@ const App = () => {
       </button>
       {showDropdown ? (
         <Dropdown
+          label='Select a shade'
           options={options}
           selected={selected}
           onSelectedChange={setSelected}

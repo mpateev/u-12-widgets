@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const Dropdown = ({ options, selected, onSelectedChange }) => {
+const Dropdown = ({ label, options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
   useEffect(() => {
     // bound click event listener to the document body to close dropdown
-    // when clicked outside of dropdown menu
+    // and show selected when clicked outside of dropdown menu
+    // if the dropdown is not visible, unbind the event listener
+    //
     const onBodyClick = (event) => {
       if (ref.current && ref.current.contains(event.target)) {
         return;
@@ -14,13 +16,16 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
       setOpen(false);
     };
     document.body.addEventListener("click", onBodyClick);
-    // cleanup for body event listener
+    //
+    // cleanup for body event listener in returned function
+    //
     return () => {
       document.body.removeEventListener("click", onBodyClick);
     };
   }, []);
 
   const renderedOptions = options.map((opt) => {
+    // don't show currently selected option in the menu list
     if (opt.option !== selected.option) {
       return (
         <div
@@ -37,11 +42,11 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 
   return (
     <div className='ui raised segment'>
-      <h2 className='ui right floated header'>Dropdown</h2>
+      <h2 className={`ui right floated ${selected.option} header`}>Dropdown</h2>
       <div className='ui clearing divider'></div>
       <div ref={ref} className='ui form'>
         <div className='field'>
-          <label className='label'>Select a Color</label>
+          <label className='label'>{label}</label>
           <div
             className={`ui selection dropdown ${open ? "visible active" : ""}`}
             onClick={() => setOpen(!open)}>
