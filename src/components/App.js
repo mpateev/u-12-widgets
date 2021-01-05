@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Accordion from "./Accordion";
-import Dropdown from "./Dropdown";
+import Translate from "./Translate";
 import Search from "./Search";
 
 const items = [
@@ -10,29 +10,11 @@ const items = [
   { title: "Title4", text: "This is a text4" },
 ];
 
-const options = [
-  { label: "Color Red", option: "red" },
-  { label: "Color Green", option: "green" },
-  { label: "Shade of Blue", option: "blue" },
-];
 const App = () => {
-  const [selected, setSelected] = useState(options[0]);
-  const [showDropdown, setShowDropdown] = useState(true);
-
   return (
     <div className='ui container'>
       <h1>Widgets App</h1>
-      <button onClick={() => setShowDropdown(!showDropdown)}>
-        Toggle Dropdown
-      </button>
-      {showDropdown ? (
-        <Dropdown
-          label='Select a shade'
-          options={options}
-          selected={selected}
-          onSelectedChange={setSelected}
-        />
-      ) : null}
+      <Translate />
       <Accordion items={items} />
       <Search />
     </div>

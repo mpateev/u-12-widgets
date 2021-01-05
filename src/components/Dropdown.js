@@ -26,10 +26,10 @@ const Dropdown = ({ label, options, selected, onSelectedChange }) => {
 
   const renderedOptions = options.map((opt) => {
     // don't show currently selected option in the menu list
-    if (opt.option !== selected.option) {
+    if (opt.value !== selected.value) {
       return (
         <div
-          key={opt.option}
+          key={opt.value}
           className='item'
           onClick={() => onSelectedChange(opt)}>
           {opt.label}
@@ -41,20 +41,16 @@ const Dropdown = ({ label, options, selected, onSelectedChange }) => {
   });
 
   return (
-    <div className='ui raised segment'>
-      <h2 className={`ui right floated ${selected.option} header`}>Dropdown</h2>
-      <div className='ui clearing divider'></div>
-      <div ref={ref} className='ui form'>
-        <div className='field'>
-          <label className='label'>{label}</label>
-          <div
-            className={`ui selection dropdown ${open ? "visible active" : ""}`}
-            onClick={() => setOpen(!open)}>
-            <i className='dropdown icon'></i>
-            <div className='text'>{selected.label}</div>
-            <div className={`menu ${open ? "visible transition" : ""}`}>
-              {renderedOptions}
-            </div>
+    <div ref={ref} className='ui form'>
+      <div className='field'>
+        <label className='label'>{label}</label>
+        <div
+          className={`ui selection dropdown ${open ? "visible active" : ""}`}
+          onClick={() => setOpen(!open)}>
+          <i className='dropdown icon'></i>
+          <div className='text'>{selected.label}</div>
+          <div className={`menu ${open ? "visible transition" : ""}`}>
+            {renderedOptions}
           </div>
         </div>
       </div>
