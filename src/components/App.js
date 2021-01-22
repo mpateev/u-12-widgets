@@ -12,11 +12,9 @@ const items = [
 
 const App = () => {
   return (
-    <div className='ui container'>
+    <div className="ui container">
       <h1>Widgets App</h1>
       <Translate />
-      <Accordion items={items} />
-      <Search />
     </div>
   );
 };
