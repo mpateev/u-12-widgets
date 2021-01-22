@@ -5,7 +5,6 @@ import Dropdown from "./Dropdown";
 import Translate from "./Translate";
 import Search from "./Search";
 import Route from "./Route";
-import Link from "./Link";
 
 const items = [
   { title: "Title1", text: "This is a text1" },
